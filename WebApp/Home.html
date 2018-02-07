@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Home</title>
+	
+	<script> 
+		function getStoryFromServer() {
+			fetch("/SimpleWebApp/story")
+			.then((res) =>  {
+				if (res.ok) {
+					return res.text();
+				}
+			})
+			.then((text) => {
+				document.getElementById("storyPlaceHolder").innerHTML = text;
+			})
+		}
+	</script>	
+</head>
+
+<body>	
+	<button onclick="getStoryFromServer();">Click to get story!</button>
+	<div id = "storyPlaceHolder" align ="center"> </div>
+</body>
+</html>
+
